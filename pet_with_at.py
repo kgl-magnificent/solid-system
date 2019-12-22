@@ -5,7 +5,7 @@ class Critter(object):
         #к которому он вызван
         print("Появилась на свет новая тварь)")
         self.name = name
-    def __str__(self):
+    def __str__(self): #метод применяется для представления объекта строками
         rep = "Объект класса Critter\n"
         rep += "имя: " + self.name + "\n"
         return rep
@@ -22,5 +22,3 @@ print("Вывод объекта crit1 на экран: ")
 print(crit1)
 print(crit1.name)
 input("1")
-
-
