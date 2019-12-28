@@ -25,6 +25,13 @@ class Critter(object):
         if self.hunger < 0:
             self.hunger = 0
         self.__pass_time()
+    def __str__(self):
+        rep = "Объект класса Critter\n"
+        rep += "имя: " + self.name
+        return rep
+    def about(self):
+        print(Critter)
+        print(self.name)
 def main():
     crit_name = input("ВВедите название зверушки")
     crit = Critter(crit_name)
@@ -58,6 +65,9 @@ def main():
         # play with your critter
         elif choice == "3":
             crit.play()
+        elif choice == "about":
+            crit.about()
+            print(crit)
 
         # some unknown choice
         else:
