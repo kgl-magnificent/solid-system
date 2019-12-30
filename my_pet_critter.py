@@ -5,7 +5,7 @@ class Critter(object):
         self.hunger = hunger
         self.boredom = boredom
     def __pass_time(self): #закрытый метод использутся только во время вызова других методов
-        self.hunger += 1
+        self.hunger += 10
         self.boredom += 1
     @property
     def mood(self):
@@ -24,8 +24,9 @@ class Critter(object):
         self.hunger -= food
         if self.hunger < 0:
             self.hunger = 0
+        print(self.hunger)
         self.__pass_time()
-    def __str__(self):
+    def __str__(self):   #использутся для print(crit)
         rep = "Объект класса Critter\n"
         rep += "имя: " + self.name
         return rep
@@ -33,7 +34,7 @@ class Critter(object):
         print(Critter)
         print(self.name)
 def main():
-    crit_name = input("ВВедите название зверушки")
+    crit_name = input("ВВедите название зверушки: ")
     crit = Critter(crit_name)
     choice = None
     while choice != "0":
@@ -60,6 +61,7 @@ def main():
 
         # feed your critter
         elif choice == "2":
+            food = input("Выберите сколько еды вы хотите дать(от 1 до 5)")
             crit.eat()
 
         # play with your critter
@@ -74,7 +76,3 @@ def main():
             print("\nSorry, but", choice, "isn't a valid choice.")
 
 main()
-
-
-
-
