@@ -19,7 +19,7 @@ class Critter(object):
         return m
     def talk(self):
         print("Меня зовут", self.name, "и сейчас я чувствую себя", self.mood)
-    def eat(self, food = 4):
+    def eat(self, food):
         print("Thanks")
         self.hunger -= food
         if self.hunger < 0:
@@ -61,8 +61,9 @@ def main():
 
         # feed your critter
         elif choice == "2":
-            food = input("Выберите сколько еды вы хотите дать(от 1 до 5)")
-            crit.eat()
+            k = input("Выберите сколько еды вы хотите дать(от 1 до 5)")
+            food = int(k)
+            crit.eat(food)
 
         # play with your critter
         elif choice == "3":
