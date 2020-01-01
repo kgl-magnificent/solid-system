@@ -26,10 +26,10 @@ class Hand(object):
     def clear(self):
         self.cards = []
     def add(self, card):
-        self.cards.append(card)
+        self.cards.append(card) #append добавление метод списка
     def give(self, card, other_hand):
-        self.cards.remove(card)
-        other_hand.add(card)
+        self.cards.remove(card) #remove удаление из списка
+        other_hand.add(card) #метод give использует  другой метод add класса hand
 #основная часть
 def main():
     card1 = Card(rank= "A", suit= "c")
