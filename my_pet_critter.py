@@ -62,8 +62,8 @@ def main():
         # feed your critter
         elif choice == "2":
             k = input("Выберите сколько еды вы хотите дать(от 1 до 5)")
-            food = int(k)
-            crit.eat(food)
+            food11 = int(k)
+            crit.eat(food11)
 
         # play with your critter
         elif choice == "3":
