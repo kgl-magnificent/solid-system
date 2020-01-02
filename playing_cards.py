@@ -1,4 +1,4 @@
-#Карты
+#Карты 2.0
 class Card(object):
     RANKS = ["A", "2", "3", "4", "5", "6", "7",
              "8", "9", "10", "J", "Q", "K"] #атрибут класса Cards
@@ -30,31 +30,41 @@ class Hand(object):
     def give(self, card, other_hand):
         self.cards.remove(card) #remove удаление из списка
         other_hand.add(card) #метод give использует  другой метод add класса hand
+class Deck(Hand):#добавляем методы в производном классе Deck к базовому классу Hand
+    def populate(self):
+        self.cards = []
+        for suit in Card.SUITS:
+            for rank in Card.RANKS:
+                self.add(Card(rank, suit))
+    def shuffle(self):
+        import random
+        random.shuffle(self.cards)
+    def deal(self, hands, per_hand = 1): #метод выдает по 1 карте
+        for rounds in range(per_hand):
+            for hand in hands:
+                if self.cards:
+                    top_card = self.cards[0]
+                    self.give(top_card, hand)
+                else:
+                    print("Карты кончились")
+
 #основная часть
 def main():
-    card1 = Card(rank= "A", suit= "c")
-    card2 = Card(rank= "2", suit= "c")
-    card3 = Card(rank= "3", suit="c")
-    card4 = Card(rank= "4", suit="c")
-    card5 = Card(rank= "5", suit="c")
-    print(card1)#печать объекта с помощью метода __str__
+    deck1 = Deck()
+    print(deck1) #используется метод __str__() для формирования строчного вывода
+    deck1.populate() #перебираются все возможные комбинвции и создаются объукты класса Card
+    print(deck1)
+    deck1.shuffle() #перемешивание колоды
+    print(deck1)
     my_hand = Hand()
-    print("У меня на руках сейчас: ")
-    print(my_hand) #печатаются сведения об объекте с помощью метода __str__
-    my_hand.add(card1)
-    my_hand.add(card2)
-    my_hand.add(card3)
-    my_hand.add(card4)
-    my_hand.add(card5)
-    print("Печатаю 5 карт, которые сейчас на руках: ")
-    print(my_hand)
     your_hand = Hand()
-    my_hand.give(card1, your_hand)
-    my_hand.give(card2, your_hand)
+    hands = [my_hand, your_hand]
+    deck1.deal(hands, per_hand = 5) #каждому игроку выдали по 5 карт
     print(my_hand)
     print(your_hand)
-    my_hand.clear()
-    print(my_hand)
+    deck1.clear()
+    print(deck1)
+
     input("bb")
 main()
 
