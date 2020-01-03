@@ -1,4 +1,5 @@
 #Моя зверушка
+#Пример инкапсуляции Python
 class Critter(object):
     def __init__(self, name, hunger = 0, boredom = 0):
         self.name = name
@@ -7,6 +8,7 @@ class Critter(object):
     def __pass_time(self): #закрытый метод использутся только во время вызова других методов
         self.hunger += 10
         self.boredom += 1
+        print("Это закрытый метод")
     @property
     def mood(self):
         unhappiness = self.boredom + self.hunger
@@ -71,6 +73,7 @@ def main():
         elif choice == "about":
             crit.about()
             print(crit)
+            crit._Critter__pass_time() #таком образом можно получить доступ к закрытому методу
 
         # some unknown choice
         else:
